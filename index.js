@@ -7,6 +7,7 @@ import { connectDB } from "./src/config/db.js";
 import { errorHandler } from "./src/middleware/errorHandler.js";
 
 import authRoutes from "./src/routes/auth.js"
+import keystoreRoutes from "./src/routes/keystore.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(limiter);
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/vault", keystoreRoutes);
 
 // Error handling
 app.use(errorHandler);
