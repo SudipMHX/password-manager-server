@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import { connectDB } from "./src/config/db.js";
 import { errorHandler } from "./src/middleware/errorHandler.js";
 
+import authRoutes from "./src/routes/auth.js"
+
 dotenv.config();
 
 const app = express();
@@ -21,6 +23,9 @@ const limiter = rateLimit({
   max: 100, // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 // Error handling
 app.use(errorHandler);
